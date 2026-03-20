@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harry's Spoon | Premium Dining Noida</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><style>
+:root {
+--gold: #d4af37;
+--black: #0f0f0f;
+--glass: rgba(255,255,255,0.05);
+}
+body {
+margin:0;
+font-family:'Poppins',sans-serif;
+background:var(--black);
+color:#e0e0e0;
+scroll-behavior:smooth;
+}
+.hero {
+height:80vh;
+background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b');
+background-size:cover;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+.hero h1{font-size:4rem;color:var(--gold)}
+nav{
+position:sticky;top:0;
+background:#111;
+text-align:center;padding:10px;
+}
+nav a{margin:10px;color:white;text-decoration:none}
+nav a.active{color:var(--gold);border-bottom:2px solid var(--gold)}
+.section-title{text-align:center;color:var(--gold);margin:40px}
+.category-card{
+background:var(--glass);
+margin:30px;
+padding:20px;
+border-radius:15px;
+}
+.menu-item{
+display:flex;justify-content:space-between;
+padding:10px;border-bottom:1px solid #444;
+transition:0.3s;
+}
+.menu-item:hover{transform:scale(1.03);color:var(--gold)}
+
+/* Floating buttons */
+.floating-buttons{
+position:fixed;bottom:20px;right:20px;
+display:flex;flex-direction:column;gap:10px;
+}
+.whatsapp-btn,.call-btn{
+width:55px;height:55px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+font-size:22px;color:white;text-decoration:none;
+}
+.whatsapp-btn{background:#25D366}
+.call-btn{background:var(--gold);color:black}
+
+.fade-in{opacity:0;transform:translateY(40px);transition:0.8s}
+.fade-in.show{opacity:1;transform:translateY(0)}
+
+</style></head>
+<body><div class="hero">
+<h1>Harry's Spoon</h1>
+<p>Shopprix Mall • Sector 61 • Noida</p>
+</div><nav>
+<a href="#veg">Veg</a>
+<a href="#nonveg">Non-Veg</a>
+<a href="#main">Main Course</a>
+<a href="#reserve">Reserve</a>
+</nav><div id="veg" class="category-card fade-in">
+<h2 class="section-title">Veg Starters</h2>
+<div class="menu-item"><span>Dahi Ke Sholey</span><span>₹299</span></div>
+<div class="menu-item"><span>Malai Chaap</span><span>₹259</span></div>
+</div><div id="nonveg" class="category-card fade-in">
+<h2 class="section-title">Non Veg</h2>
+<div class="menu-item"><span>Chicken Afghani</span><span>₹399</span></div>
+<div class="menu-item"><span>Mutton Seekh</span><span>₹399</span></div>
+</div><div id="main" class="category-card fade-in">
+<h2 class="section-title">Main Course</h2>
+<div class="menu-item"><span>Shahi Paneer</span><span>₹289</span></div>
+<div class="menu-item"><span>Mutton Rogan Josh</span><span>₹399</span></div>
+</div><div id="reserve" class="category-card fade-in">
+<h2 class="section-title">Reserve Table</h2>
+<a href="https://wa.me/918130494813?text=Hi%20I%20want%20to%20book%20a%20table" class="menu-item">Book on WhatsApp</a>
+</div><!-- Floating Buttons --><div class="floating-buttons">
+<a href="https://wa.me/918130494813?text=Hi%20I%20want%20to%20book%20a%20table" class="whatsapp-btn">💬</a>
+<a href="tel:8130494813" class="call-btn">📞</a>
+</div><script>
+
+// Scroll animation
+const elements=document.querySelectorAll('.fade-in');
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){entry.target.classList.add('show');}
+});
+});
+elements.forEach(el=>observer.observe(el));
+
+// Navbar active
+const sections=document.querySelectorAll("div[id]");
+const navLinks=document.querySelectorAll("nav a");
+window.addEventListener("scroll",()=>{
+let current="";
+sections.forEach(section=>{
+const top=section.offsetTop-100;
+if(scrollY>=top){current=section.id;}
+});
+navLinks.forEach(a=>{
+a.classList.remove("active");
+if(a.getAttribute("href").includes(current)){
+a.classList.add("active");
+}
+});
+});
+
+</script></body>
+</html>
